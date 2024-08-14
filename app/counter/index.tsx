@@ -10,9 +10,9 @@ import { getFromStorage, saveToStorage } from "../../utils/storage";
 
 // 10 seconds in ms
 const frequency = 10 * 1000;
-const countdownStorageKey = "taskly-countdown";
+export const countdownStorageKey = "taskly-countdown";
 
-type PersistedCountdownState = {
+export type PersistedCountdownState = {
   currentNotificationId: string | undefined;
   completedAtTimestamps: number[];
 };
@@ -39,7 +39,6 @@ export default function CounterScreen() {
   }, []);
   
   const lastCompletedAt = countdownState?.completedAtTimestamps[0];
-  
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -138,7 +137,8 @@ export default function CounterScreen() {
         activeOpacity={0.8}
       >
         <Text style={styles.buttonText}>I've done the thing!</Text>
-      </TouchableOpacity>    </View>
+      </TouchableOpacity>    
+    </View>
   );
 }
 
