@@ -1,12 +1,14 @@
 import { useRouter } from "expo-router";
-import { Text, View, StyleSheet, TouchableOpacity, Alert } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity, Alert, Dimensions } from "react-native";
 import { theme } from "../../theme";
 import { registerForPushNotificationsAsync } from "../../utils/registerForPushNotificationsAsync";
 import * as Notifications from "expo-notifications";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { intervalToDuration, isBefore } from "date-fns";
 import { TimeSegment } from "../../components/TimeSegment";
 import { getFromStorage, saveToStorage } from "../../utils/storage";
+import * as Haptics from "expo-haptics";
+import ConfettiCannon from "react-native-confetti-cannon";
 
 // 10 seconds in ms
 const frequency = 10 * 1000;
@@ -23,7 +25,7 @@ type CountdownStatus = {
 };
 
 export default function CounterScreen() {
-  // const router = useRouter();
+  const confettiRef = useRef<any>();
   const [countdownState, setCountdownState] = useState<PersistedCountdownState>();
   const [status, setStatus] = useState<CountdownStatus>({
     isOverdue: false,
@@ -62,6 +64,8 @@ export default function CounterScreen() {
   }, [lastCompletedAt]);
 
   const scheduleNotification = async () => {
+    Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success);
+    confettiRef?.current?.start();
     let pushNotificationId;
     const result = await registerForPushNotificationsAsync();
       if (result === "granted") {
@@ -137,7 +141,14 @@ export default function CounterScreen() {
         activeOpacity={0.8}
       >
         <Text style={styles.buttonText}>I've done the thing!</Text>
-      </TouchableOpacity>    
+      </TouchableOpacity>
+      <ConfettiCannon
+        ref={confettiRef}
+        count={50}
+        origin={{ x: Dimensions.get("window").width / 2, y: -30 }}
+        autoStart={false}
+        fadeOut={true}
+     /> 
     </View>
   );
 }
