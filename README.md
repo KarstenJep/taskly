@@ -1,9 +1,12 @@
-# Welcome to your Expo app 👋
+# Taskly
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Description
+A mobile application to manage todo's. Users can added items to the list, edit, and complete. User friendly interface with smooth animation. 
+
+# EDA Project
+This version uses TypeScript, React Native, Expo (a full list of dependencies can be found in `package.json`)
 
 ## Get started
-
 1. Install dependencies
 
    ```bash
@@ -23,28 +26,22 @@ In the output, you'll find options to open the app in a
 - [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
 - [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Lay of the Land
+Directory Structure:
+- `app/` contains the React Native application
+- `expo/` contains the expo files
 
-## Get a fresh project
+## Usage
+ 1. User adds a new task to the todo checklist
+ 2. User edits/updates task when necessary
+ 3. User views/completes task at any time
 
-When you're ready, run:
+ ## Built With
+ - TypeScript
+ - React Native
+ - Expo
+ - Prettier
+ - ESlint
 
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Support
+If you have suggestions or issues, please email kjepsen86@gmail.com
